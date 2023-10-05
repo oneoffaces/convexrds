@@ -12,6 +12,9 @@ class Figure:
     def area(self):
         return 0.0
 
+    def count(self):
+        return 0
+
 
 class Void(Figure):
     """ "Hульугольник" """
@@ -93,24 +96,24 @@ class Polygon(Figure):
         c = 0
         for i in range(0, 3):
             if i == 2:
-                l = 0
+                h = 0
                 k = 1
             elif i == 1:
-                l = i + 1
+                h = i + 1
                 k = 0
             else:
-                l = i + 1
+                h = i + 1
                 k = i + 2
             if R2Point.distance_centre_to_segment(self.points.array[i],
-                                                  self.points.array[l]) < 1:
+                                                  self.points.array[h]) < 1:
                 c = inf
             elif R2Point.distance_centre_to_segment(self.points.array[i],
-                                                    self.points.array[l]) == 1:
+                                                    self.points.array[h]) == 1:
                 c += 1
                 if (R2Point.projection(self.points.array[i],
-                                       self.points.array[l]) >= 1 and
+                                       self.points.array[h]) >= 1 and
                     R2Point.projection(
-                                        self.points.array[l],
+                                        self.points.array[h],
                                         self.points.array[k]) <= 0):
                     c -= 1
         return c
@@ -158,23 +161,23 @@ class Polygon(Figure):
             for i in range(self.points.size()):
                 if i + 1 > self.points.size() - 1:
                     k = 1
-                    l = 0
+                    h = 0
                 elif i + 1 > self.points.size():
                     k = 0
-                    l = i + 1
+                    h = i + 1
                 else:
                     k = i + 2
-                    l = i + 1
+                    h = i + 1
                 if R2Point.distance_centre_to_segment(self.points.array[i],
-                                                      self.points.array[l])\
+                                                      self.points.array[h])\
                         < 1:
                     c = inf
                 elif R2Point.distance_centre_to_segment(self.points.array[i],
-                                                        self.points.array[l]) \
+                                                        self.points.array[h]) \
                         == 1:
                     if (R2Point.projection(self.points.array[i],
-                                           self.points.array[l]) >= 1 and
-                            R2Point.projection(self.points.array[l],
+                                           self.points.array[h]) >= 1 and
+                            R2Point.projection(self.points.array[h],
                                                self.points.array[k]) <= 0):
                         c -= 1
                     c += 1

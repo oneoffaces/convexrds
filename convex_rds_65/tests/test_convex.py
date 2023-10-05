@@ -1,5 +1,5 @@
 from pytest import approx
-from math import sqrt
+from math import sqrt, inf
 from r2point import R2Point
 from convex import Figure, Void, Point, Segment, Polygon
 
@@ -25,6 +25,9 @@ class TestVoid:
     # Площадь нульугольника нулевая
     def test_аrea(self):
         assert self.f.area() == 0.0
+
+    def test_count(self):
+        assert self.f.count() == 0
 
     # При добавлении точки нульугольник превращается в одноугольник
     def test_add(self):
@@ -52,6 +55,10 @@ class TestPoint:
     # Площадь одноугольника нулевая
     def test_аrea(self):
         assert self.f.area() == 0.0
+
+    # Точка 1
+    def test_count(self):
+        assert self.f.count() == 1
 
     # При добавлении точки одноугольник может не измениться
     def test_add1(self):
@@ -83,6 +90,10 @@ class TestSegment:
     # Площадь двуугольника нулевая
     def test_аrea(self):
         assert self.f.area() == 0.0
+
+    # Отрезок inf
+    def test_count(self):
+        assert self.f.count() == inf
 
     # При добавлении точки двуугольник может не измениться
     def test_add1(self):
@@ -162,3 +173,6 @@ class TestPolygon:
 
     def test_area2(self):
         assert self.f.add(R2Point(1.0, 1.0)).area() == approx(1.0)
+
+    def test_count(self):
+        assert self.f.count() == inf

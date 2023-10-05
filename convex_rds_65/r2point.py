@@ -67,6 +67,7 @@ class R2Point:
         return (-a.x * (b.x - a.x) - a.y * (b.y - a.y)) / \
             ((b.x - a.x) ** 2 + (b.y - a.y) ** 2)
 
+
 if __name__ == "__main__":
     x = R2Point(1.0, 1.0)
     print(type(x), x.__dict__)

@@ -159,10 +159,10 @@ class Polygon(Figure):
 
             c = 0
             for i in range(self.points.size()):
-                if i + 1 > self.points.size() - 1:
+                if i + 1 == self.points.size():
                     k = 1
                     h = 0
-                elif i + 1 > self.points.size():
+                elif i + 1 == self.points.size() - 1:
                     k = 0
                     h = i + 1
                 else:
